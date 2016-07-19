@@ -1,0 +1,9 @@
+ ----
+ Module net.jefftran.tapestry5:tapestry-kit
+ ----
+
+net.jefftran.tapestry5:tapestry-kit Documentation
+
+  This is where you can start to document your module.
+
+  Create new files in the Maven APT format, and update the site.xml file to point to them.
