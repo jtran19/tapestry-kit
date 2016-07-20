@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html t:type="layout" t:title="CapsLockDetect Mixin Test" 
+    xmlns:t="http://tapestry.apache.org/schema/tapestry_5_4.xsd"
+    xmlns:p="tapestry:parameter">
+    
+<h1>CapsLockDetect Mixin Test</h1>
+
+<t:form t:id="testForm">
+	<t:label t:for="text">Password Field</t:label>
+	<t:passwordfield t:id="text" t:value="text" t:mixins="tapestrykit/CapsLockDetect" />
+</t:form>
+    
+</html>
