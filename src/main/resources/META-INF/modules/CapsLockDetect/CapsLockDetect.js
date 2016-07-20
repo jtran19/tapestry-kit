@@ -1,10 +1,16 @@
+/*
+ * FYI: Chrome on OSX (and maybe other platforms) registers CapsLock KEYUP when caps lock 
+ * is turned off, not when the physical key is released.  CapsLock KEYDOWN is registered 
+ * when caps lock is turned on, not when the physical key is depressed.
+ */
+
 define([], function() {
 	return {
 		init : function(opts) {
 			console.log(opts['fieldId']);
 
 			var notice = document.getElementById('capslock-notice');
-			var handled;
+//			var handled;
 
 			document.getElementById(opts['fieldId']).addEventListener(
 					'keyup',
@@ -23,13 +29,14 @@ define([], function() {
 								notice.classList.remove('hidden');
 							} else if ((isLowerCase && !shiftKeyWasDown)
 									|| (isUpperCase && shiftKeyWasDown)) {
-								showCapsLockNotice();
-							}
-						} else {
-							if (event.key === 'CapsLock') {
-								toggleCapsLockNotice();
+								hideCapsLockNotice();
 							}
 						}
+//						else {
+//							if (event.key === 'CapsLock') {
+//								toggleCapsLockNotice();
+//							}
+//						}
 					});
 
 //			document.getElementById(opts['fieldId']).addEventListener(
@@ -42,13 +49,13 @@ define([], function() {
 //					});
 
 			function showCapsLockNotice() {
-				if (!notice.classList.contains('hidden')) {
-					notice.classList.add('hidden');
-				}
+				notice.classList.remove('hidden');
 			}
 			
 			function hideCapsLockNotice() {
-				
+				if (!notice.classList.contains('hidden')) {
+					notice.classList.add('hidden');
+				}
 			}
 			
 			function toggleCapsLockNotice() {
